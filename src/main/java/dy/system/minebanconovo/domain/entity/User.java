@@ -50,9 +50,6 @@ public class User{
     @Column(nullable = false, updatable = false)
     private LocalDateTime createdAt;
 
-    @Enumerated(EnumType.STRING)
-    private UserRole userRole;
-
     @OneToOne
     @JoinColumn(name = "address_id")
     private Address address;
