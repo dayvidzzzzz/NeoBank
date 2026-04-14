@@ -19,7 +19,7 @@ public class Account {
 
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
-    private UUID id;
+    private String id;
 
     @Enumerated(EnumType.STRING)
     private AccountType accountType;

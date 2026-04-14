@@ -22,7 +22,7 @@ import java.util.UUID;
 public class User{
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
-    private UUID id;
+    private String id;
 
     @Column(nullable = false)
     private String fullName;
@@ -56,7 +56,4 @@ public class User{
 
     @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
     private List<Account> accounts;
-
-    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
-    private List<Transaction> transactions;
 }
