@@ -1,6 +1,6 @@
 package dy.system.minebanconovo.domain.entity;
 
-import dy.system.minebanconovo.enuns.AccountType;
+import dy.system.minebanconovo.domain.enuns.AccountType;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -23,7 +23,6 @@ public class Account {
 
     @Enumerated(EnumType.STRING)
     private AccountType accountType;
-
 
     @ManyToOne
     @JoinColumn(name = "user_id")

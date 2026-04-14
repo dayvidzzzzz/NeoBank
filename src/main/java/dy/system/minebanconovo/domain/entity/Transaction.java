@@ -1,7 +1,7 @@
 package dy.system.minebanconovo.domain.entity;
 
-import dy.system.minebanconovo.enuns.TransactionState;
-import dy.system.minebanconovo.enuns.TransactionType;
+import dy.system.minebanconovo.domain.enuns.TransactionState;
+import dy.system.minebanconovo.domain.enuns.TransactionType;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
