@@ -1,5 +1,5 @@
-CREATE TABLE IF NOT EXISTS "user" (
-    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+CREATE TABLE IF NOT EXISTS `user` (
+    id UUID PRIMARY KEY DEFAULT (UUID()),
     full_name VARCHAR(255) NOT NULL,
     cpf VARCHAR(255) NOT NULL UNIQUE,
     login VARCHAR(255),
@@ -10,6 +10,5 @@ CREATE TABLE IF NOT EXISTS "user" (
     birth_date DATE,
     created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     address_id BIGINT,
-    CONSTRAINT fk_user_address FOREIGN KEY (address_id) REFERENCES address(id) ON DELETE SET NULL
+    CONSTRAINT fk_user_address FOREIGN KEY (address_id) REFERENCES `address`(id) ON DELETE SET NULL
 );
-
