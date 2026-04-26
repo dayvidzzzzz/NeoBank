@@ -1,7 +1,10 @@
 package dy.system.minebanconovo.service;
 
+import dy.system.minebanconovo.domain.entity.Account;
 import dy.system.minebanconovo.domain.entity.Address;
 import dy.system.minebanconovo.domain.entity.User;
+import dy.system.minebanconovo.domain.enuns.AccountStatus;
+import dy.system.minebanconovo.domain.enuns.AccountType;
 import dy.system.minebanconovo.domain.enuns.StatusUser;
 import dy.system.minebanconovo.domain.enuns.UserRole;
 import dy.system.minebanconovo.dto.AddressResponseDTO;
@@ -12,6 +15,7 @@ import dy.system.minebanconovo.exception.BusinessRuleException;
 import dy.system.minebanconovo.exception.EmptyRequestException;
 import dy.system.minebanconovo.exception.InvalidCpfException;
 import dy.system.minebanconovo.infra.utils.CpfValidator;
+import dy.system.minebanconovo.repository.AccountRepository;
 import dy.system.minebanconovo.repository.AddressRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -29,6 +33,9 @@ public class UserService {
 
     @Autowired
     AddressRepository addressRepository;
+
+    @Autowired
+    AccountRepository accountRepository;
 
     @Transactional
     public UserResponseDTO createUser(UserRegisterDTO data){
@@ -70,6 +77,14 @@ public class UserService {
                 .build();
         userRepository.save(user);
 
+        Account account = Account.builder()
+                .accountType(AccountType.CHECKING)
+                .accountStatus(AccountStatus.ACTIVE)
+                .user(user)
+                .build();
+        accountRepository.save(account);
+
+        user.setAccounts(List.of(account));
         return toResponse(user);
     }
 

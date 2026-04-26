@@ -8,8 +8,6 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.UUID;
-
 @Entity
 @Table(name = "transaction")
 @Data
@@ -30,9 +28,9 @@ public class Transaction {
 
     @ManyToOne
     @JoinColumn(name = "sender_id")
-    private User sender;
+    private Account sender;
 
     @ManyToOne
     @JoinColumn(name = "receiver_id")
-    private User receiver;
+    private Account receiver;
 }
