@@ -1,0 +1,2 @@
+ALTER TABLE account
+    ADD COLUMN account_status VARCHAR(255) NOT NULL DEFAULT 'ACTIVE';
